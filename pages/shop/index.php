@@ -11,7 +11,7 @@ $shop_id = $_SESSION['shop_id'];
 $produtos = "SELECT p.prod_id, p.prod_name,p.prod_photo, p.prod_price, p.prod_size, p.prod_stock, p.prod_desc, p.prod_status, c.cat_name
      FROM products p, category c 
      WHERE shop = $shop_id 
-     AND p.prod_cat = c.cat_id AND prod_status = 'online' ";
+     AND p.prod_cat = c.cat_id AND prod_status = 'online'";
            
 $resultado= $conn->prepare($produtos); 
 $resultado->execute();
