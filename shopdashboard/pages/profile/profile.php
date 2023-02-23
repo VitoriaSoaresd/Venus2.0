@@ -1,9 +1,14 @@
 <?php
-require '../../../shopdashboard/includes/header.php';
+require '../../../shopdashboard/includes/headerpages.php';
 require '../../../shopdashboard/includes/nav.php';
-require '../../../shopdashboard/includes/footer.php';
+require '../../../shopdashboard/includes/footerpages.php';
 include_once '../../../includes/config.php';
 ?>
+
+<!-- chama o css da página-->
+<link rel="stylesheet" href="../shopdashboard/pages/profile/style.css">
+<!-- Título da página -->
+<title>Perfil da Loja - Dashboard</title>
 
 <!-- ============================================================== -->
         <!-- wrapper  -->
