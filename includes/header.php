@@ -7,7 +7,7 @@ ob_start();
 
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../../img/icondosite.png">
+    <link rel="icon" href="../../img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venus Shop - O Sistema Delas</title>
@@ -25,7 +25,7 @@ ob_start();
 
       <nav class="navbar navbar-expand-lg navbar-light">
         <!--Nome + Icon-->
-          <a class="navbar-brand" href="/"><img src="../../img/logo-principal.png" alt="Logo da VenusShop" title="Venus Shop"></a>
+          <a class="navbar-brand" href="/"><img src="../../img/logo-2.png" alt="Logo da VenusShop" title="Venus Shop"></a>
           <!--Dropdown para telas menores-->  		
           <button type="button" data-target="#conteudoNavbarSuportado" data-toggle="collapse" class="navbar-toggle">
             <span class="navbar-toggler-icon"></span>
