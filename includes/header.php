@@ -45,38 +45,46 @@ ob_start();
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>categorias</b></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">					
-                <a class="dropdown-item" href="#">moças</a>
-                <a class="dropdown-item" href="#">pets</a>
-                <a class="dropdown-item" href="#">beleza</a>
-                <a class="dropdown-item" href="#">deco&casa</a>
-                <a class="dropdown-item" href="#">escritório</a>
+                <a class="dropdown-item" href="../../pages/category?id=1">moças</a>
+                <a class="dropdown-item" href="../../pages/category?id=2">pets</a>
+                <a class="dropdown-item" href="../../pages/category?id=3">beleza</a>
+                <a class="dropdown-item" href="../../pages/category?id=4">deco&casa</a>
+                <a class="dropdown-item" href="../../pages/category?id=5">artesanato</a>
               </div>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>lojas</b></a>
+              <a class="nav-link" href="../../pages/navshops"><b>lojas</b></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"><b>contato</b></a>
+              <a class="nav-link" href="../../pages/contacts"><b>contato</b></a>
             </li>
           </ul>
         </div>
         <!--Barra de pesquisa-->
-        <form id="search-box">
+        <form id="search-box" method="post" action="../../pages/search/index.php">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="pesquise em venus" name="search">
+            <input type="text" class="form-control" placeholder="pesquise em venus" name="search" required >
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" title="pesquisar"></i></button>
             </div>
           </div>
         </form>
         <!--Sacola de compras-->
-        <ul class="nav navbar-nav navbar-inline" id="iuserm">
+        <ul class="nav navbar-nav navbar-inline nav-item" id="iuserm">
+          
           <li class="nav-item">
-            <a class="nav-link" href="#" id="notifications"><i class="fa-solid fa-inbox" title="mensagens" alt="Mensagens"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
-              <span class="badge">10</span>
+            <a class="nav-link" href="../../pages/frmcart" id="shopicon"><i class="fa-solid fa-bag-shopping" title="continue comprando" alt="Minha sacola"></i>
+            <!-- Só mostra o numero se tiver algum item adicionado -->
+            <?php 
+            if(isset($_SESSION['qntcart'])){
+              $cart = $_SESSION['qntcart'];
+            
+            if($cart > 0){              
+              echo "<span class='badge'>$cart</span>";
+            }
+          }
+              ?> 
+              
             </a>
           </li>
           
@@ -85,44 +93,24 @@ ob_start();
      
      // Se o usuário está logado...
      if (isset($_SESSION['user_name'])) :
+      $user_id = $_SESSION['user_id'];
 
      ?>
             <!--Perfil do usuário logado e tiver foto-->
-            <li class="dropdown-user navbar-inline nav-profile">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
-              <?php
-                if (!empty($_SESSION['user_photo'])):
-                  ?>
-              <img src="../../pages/photousers/<?php echo $_SESSION['user_photo']?>">
-              </a>
-              <?php 
-                else:
-                  ?>
-             <i class="fa-solid fa-circle-user" title="minha conta" alt="Minha conta"></i></a>
-  
-             <?php
-               endif;
-               ?>
+            <li class="nav-item">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action ">            
+              <i class="fa-solid fa-user-astronaut" title="minha conta" alt="Minha conta"></i>
+            </a> 
+           
               <ul class="dropdown-menu">
-                <li class="nav-profile">
-                  <?php
-                if (!empty($_SESSION['user_photo'])):
-                  ?>                
-                <li class="nav-profile"><a href="../../pages/profile"><img src="../../pages/photousers/<?php echo $_SESSION['user_photo'] ?>">meu perfil</a></li>
-                <?php 
-                else:
-                  ?>
-                   <li><a href="../../pages/profile"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>                
-                
-               <?php
-               endif;
-               ?>
-                <li><a href="#"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
-                <li><a href="#"><i class="fa-solid fa-heart"></i> favoritos</a></li>
-                <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
+                <li class="nav-profile nav-item">               
+                <li><a href="../../pages/profile"><i class="fa-solid fa-user-astronaut"></i> meu perfil</a></li>                            
+                <li><a href="../../pages/frmcart"><i class="fa-solid fa-bag-shopping"></i> continue comprando</a></li>
+                <li><a href="../../pages/frmfavorite"><i class="fa-solid fa-heart"></i> favoritos</a></li>
+                <li><a href="../../pages/sale"><i class="fa-solid fa-cart-shopping"></i> minhas compras</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
-                <li><a href="#"><i class="fa-solid fa-gear"></i> configurações</a></li>
+                <li><a href="../../pages/faq"><i class="fa-solid fa-circle-question"></i> ajuda</a></li>
+                <li><a <?php echo "href='../../pages/edituser?id=$user_id'" ?>><i class="fa-solid fa-gear"></i> configurações</a></li>
                 <li class="divider"></li>
                 <li><a href="../../pages/exit"><i class="fa-solid fa-right-from-bracket"></i> <b>sair</b></a></li>
               </ul>
@@ -135,14 +123,14 @@ ob_start();
       ?>
       <li>
       <li class="nav-item">
-      <a class="nav-link" href="../../pages/login"><i class="fa-solid fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
+      <a class="nav-link" href="../../pages/login"><i class="fa-regular fa-circle-user" title="Fazer Login" alt="Fazer Login"></i></a>
 
       <?php
       endif;
       ?>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0" id="btnvender">
+        <form class="nav-item form-inline my-2 my-lg-0" id="btnvender">
           <a href="../../pages/frmshop"><button type="button" class="btn btn-dark">quero vender</button></a>
         </form>
       </nav>

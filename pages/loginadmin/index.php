@@ -23,11 +23,11 @@ if(($resultado) AND ($resultado->rowCount()!= 0)){
 //o passwordverify so funcionou com 123,tentei a senha admin e ele não conseguiu verificar
     if(password_verify($dadoslogin['passw'],$resposta['user_password'])){     
      
-       header("location:../admin");
+       header("location:../../admdashboard");
      
     }else{
 
-     var_dump($dadoslogin);
+     //var_dump($dadoslogin);
       $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
                           Error: Usuário ou senha inválidos!
                          </div>';
@@ -44,7 +44,6 @@ if(isset($_SESSION['msg'])){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
